@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js课堂作业</title>
+    <style>
+
+        .container{
+            width:1000px;
+            height:600px;
+            background-color:#f1f1f1;
+        }
+        #change{
+            width:100px;
+            height:100px;
+            background-color:#FFFF99;
+        }
+        .btn{
+            width:70px;
+            height:30px;
+            color:#fff;
+            border:0
+        }
+        .btn:hover{
+
+        }
+        .row{
+            margin-top:20px;
+        }
+        .c-red{
+            background-color: palevioletred;
+        }
+        .c-yellow{
+            background-color:#F7B824;
+        }
+        .c-blue{
+            background-color: #01AAED;
+        }
+        .change{
+            border:2px solid #000;
+        }
+        .left-part{
+            float:left;
+            margin:20px;
+            padding:20px;
+        }
+        .right-part{
+            border:3px solid #ccc;
+            float:right;
+            margin:20px;
+            padding:20px;
+            display:none;
+
+        }
+        h2{
+            display: inline-block;
+            margin-right:20px;
+
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="left-part">
+        <h2>请为下面的div设置样式</h2>
+        <button type="button" id="Btn" class="btn c-yellow" style="margin-bottom:20px">点击设置</button>
+        <div id="change" class="change"></div>
+    </div>
+    <div class="right-part" id="styleChage">
+        <div id="bg" class="row">
+            <label>请选择背景色：</label>
+            <button class="btn c-red">红</button>
+            <button class="btn c-yellow">黄</button>
+            <button class="btn c-blue">蓝</button>
+        </div>
+        <div id="wid" class="row">
+            <label>请选择宽：</label>
+            <button class="btn">200px</button>
+            <button class="btn">300px</button>
+            <button class="btn">400px</button>
+        </div>
+        <div id ="hig" class="row">
+            <label>请选择高：</label>
+            <button class="btn">200px</button>
+            <button class="btn">300px</button>
+            <button class="btn">400px</button>
+        </div>
+        <div id ="submit" class="row" style="text-align:center">
+            <button class="btn" id="ok" style="background-color: #01AAED">确定</button>
+            <button class="btn" id="cancel" style="background-color:#1e71b1">取消</button>
+        </div>
+    </div>
+
+</div>
+
+</body>
+<script>
+    window.onload = function(){
+        var oBtn= document.getElementById('Btn');
+        var oChange = document.getElementById('change');
+        var styleChage = document.getElementById('styleChage');
+        var okBtn = document.getElementById('ok');
+        var ocancel = document.getElementById('cancel');
+        //设置颜色
+        var obg = document.getElementById('bg');
+        var colorBtn = obg.getElementsByClassName('btn');
+        //设置宽
+        var owid = document.getElementById('wid');
+        var widthBtn = owid.getElementsByClassName('btn');
+
+        //设置高
+        var ohig = document.getElementById('hig');
+        var heightBtn = ohig.getElementsByClassName('btn');
+
+        //点击弹出设置样式面板
+        oBtn.onclick = function(){
+            styleChage.style.display ='block';
+        }
+        var colBtnLen = colorBtn.length;
+
+           colorBtn[0].onclick = function(){
+               oChange.style.background ='red';
+           },
+            colorBtn[1].onclick = function(){
+                oChange.style.background ='yellow';
+            },
+
+           colorBtn[2].onclick = function(){
+               oChange.style.background ='#01AAED';
+           }
+
+        widthBtn[0].onclick=function(){
+            oChange.style.width='200px';
+        }
+        widthBtn[1].onclick=function(){
+            oChange.style.width='300px';
+        }
+        widthBtn[2].onclick=function(){
+            oChange.style.width='400px';
+        }
+
+        heightBtn[0].onclick=function(){
+            oChange.style.height='200px';
+        }
+        heightBtn[1].onclick=function(){
+            oChange.style.height='300px';
+        }
+        heightBtn[2].onclick=function(){
+            oChange.style.height='400px';
+        }
+        //取消
+        okBtn.onclick = function(){
+            styleChage.style.display ='none';
+        }
+
+
+        //取消
+        ocancel.onclick = function(){
+            oChange.style.width='100px';
+            oChange.style.height='100px';
+            oChange.style.height='100px';
+            oChange.style.background='#FFFF99';
+            styleChage.style.display ='none';
+        }
+
+
+
+       }
+
+
+
+
+</script>
+</html>
