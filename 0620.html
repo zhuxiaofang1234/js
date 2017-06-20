@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模拟手机发送短信</title>
+    <style>
+        input,button,img{
+            padding:0;
+            margin:0;
+        }
+
+        #moPhone{
+            background: url(images/q.jpg) no-repeat;
+            position:relative;
+            width:605px;
+            height:760px;
+            margin:0 auto;
+        }
+        .screen{
+            width:266px;
+            height:455px;
+            position:absolute;
+            top:152px;
+            left:156px;
+        }
+        .fix-bar{
+            position:fixed;
+           bottom:10px;
+        }
+        .pic{
+            vertical-align:middle;
+        }
+        .input-text{
+            height:25px;
+            width:180px
+        }
+        .btn{
+            height:25px;
+            padding:4px;
+            vertical-align:middle;
+        }
+        .text{
+            margin-top:10px;
+            font-size:14px;
+            padding:4px;
+            border-radius:3px;
+            display:inline-block;
+            max-width:140px
+        }
+        .c-green{
+            background:#5fb878;
+        }
+        .c-white{
+            background:#ccc;
+        }
+        .left-bar{
+            float:left;
+            margin-right:100px;
+        }
+        .right-bar{
+            float:right;
+        }
+        .fix-bar{
+            position:absolute;
+            bottom:3px
+        }
+
+
+
+    </style>
+</head>
+<body>
+<div id = "moPhone">
+    <div class="screen">
+        <div class="left-bar"><img src="images/a.png"/><span class="text c-green">在吗？吃饭了没</span></div>
+        <div class="right-bar"><span class="text c-white">吃了</span><img src="images/a.png"/></div>
+        <div class="left-bar"><img src="images/a.png"/><span class="text c-green">吃的什么呢</span></div>
+        <div class="right-bar"><span class="text c-white">吃的牛肉，鸡肉,花菜鹅鹅鹅鹅鹅鹅饿</span><img src="images/a.png"/></div>
+        <div class="right-bar"><span class="text c-white">吃的牛肉，鸡肉,花菜鹅鹅鹅鹅鹅鹅饿</span><img src="images/a.png"/></div>
+        <div class="left-bar"><img src="images/a.png"/><span class="text c-green">哇，好丰盛！</span></div>
+        <div class="fix-bar">
+            <img src="images/a.png" class="pic"/>
+            <input class="input-text" type="text"/>
+            <button type="button" class="btn">发送</button>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
