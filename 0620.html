@@ -55,10 +55,11 @@
         }
         .left-bar{
             float:left;
-            margin-right:100px;
+            margin-right:150px;
         }
         .right-bar{
             float:right;
+            margin-left:150px;
         }
         .fix-bar{
             position:absolute;
@@ -66,26 +67,72 @@
         }
 
 
-
     </style>
 </head>
 <body>
 <div id = "moPhone">
     <div class="screen">
-        <div class="left-bar"><img src="images/a.png"/><span class="text c-green">在吗？吃饭了没</span></div>
-        <div class="right-bar"><span class="text c-white">吃了</span><img src="images/a.png"/></div>
-        <div class="left-bar"><img src="images/a.png"/><span class="text c-green">吃的什么呢</span></div>
-        <div class="right-bar"><span class="text c-white">吃的牛肉，鸡肉,花菜鹅鹅鹅鹅鹅鹅饿</span><img src="images/a.png"/></div>
-        <div class="right-bar"><span class="text c-white">吃的牛肉，鸡肉,花菜鹅鹅鹅鹅鹅鹅饿</span><img src="images/a.png"/></div>
-        <div class="left-bar"><img src="images/a.png"/><span class="text c-green">哇，好丰盛！</span></div>
+        <div id="content">
+
+            <!--<div class="right-bar"><span class="text c-white">吃了</span><img src="images/a.png"/></div>
+            <div class="left-bar"><img src="images/a.png"/><span class="text c-green">吃的什么呢</span></div>
+            <div class="right-bar"><span class="text c-white">吃的牛肉，鸡肉,花菜鹅鹅鹅鹅鹅鹅饿</span><img src="images/a.png"/></div>
+            <div class="right-bar"><span class="text c-white">吃的牛肉，鸡肉,花菜鹅鹅鹅鹅鹅鹅饿</span><img src="images/a.png"/></div>
+            <div class="left-bar"><img src="images/a.png"/><span class="text c-green">哇，好丰盛！</span></div>-->
+        </div>
         <div class="fix-bar">
-            <img src="images/a.png" class="pic"/>
-            <input class="input-text" type="text"/>
-            <button type="button" class="btn">发送</button>
+            <img src="images/a.png" class="pic" id="headImg"/>
+            <input class="input-text" type="text" />
+            <button type="button" id="sendBtn" class="btn">发送</button>
         </div>
     </div>
 </div>
-
-
 </body>
+<script>
+    window.onload = function(){
+        var oSend = document.getElementById('sendBtn');
+        var oText = document.getElementsByClassName('input-text')[0];
+        var oPic  =document.getElementById('headImg');
+        var oContent = document.getElementById('content');
+
+        //点击切换头像
+        var flag ='left';
+        oPic.onclick = function(){
+            if(flag=='left'){
+                oPic.src = "images/s.png";
+                flag = 'right';
+            }else if(flag=='right'){
+                oPic.src = "images/a.png";
+                flag ='left';
+            }
+        }
+
+        oSend.onclick = function(){
+            //获取内容
+            var val = oText.value;
+            //清空text的内容
+            oText.value =" ";
+            
+            //获取头像
+            var headImg = oPic.src;
+
+            if(val==" "|| val==null || val==undefined){
+                alert('发送的消息不能为空！');
+            }
+            var msgStr;
+            var newNode = document.createElement('div');
+            if(flag=='left'){
+                msgStr='<img src="'+headImg+'"/><span class="text c-green">'+val+'</span>';
+                newNode.innerHTML = msgStr;
+                newNode.className="left-bar";
+            }else if(flag=='right'){
+                msgStr='<span class="text c-white">'+val+'</span><img src="'+headImg+'"/>';
+                newNode.innerHTML = msgStr;
+                newNode.className="right-bar";
+            }
+            oContent.appendChild(newNode);
+        }
+
+    }
+</script>
 </html>
