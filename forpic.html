@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        span{
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
+            width: 510px;
+            height: 600px;
+            background: url(images/keyboard.jpg);
+        }
+
+        div{
+            width: 49px;
+            height: 58px;
+            border: 1px solid #DBDBDB;
+            float: left;
+            background: #DBDBDB;
+        }
+    </style>
+    <title>for图片生成</title>
+    <link rel="icon" type="img/x-icon" href="images/miaovlogo.ico">
+    <link rel="shortcut" type="img/x-icon" href="images/miaovlogo.ico">
+</head>
+<body>
+<span></span>
+</body>
+<script>
+    window.onload = function ()
+    {
+        var aSpan = document.getElementsByTagName('span');
+        var aDiv = document.getElementsByTagName('div');
+
+        var a = 0;
+
+        for ( var i=0; i<++a && i<=99; i++ )	//a++ && i<=99 的值就是i<100;提前预习运算符:与\或\逻辑非
+             {
+                aSpan[0].innerHTML += "<div></div>";
+            }
+
+    for ( var i=0; i<aDiv.length; i++)
+    {
+        aDiv[i].onmouseover = function ()
+        {
+            this.style.background = 'none';
+            this.style.border = '#DBDBDB;';
+        }
+    };
+    };
+</script>
+</html>
