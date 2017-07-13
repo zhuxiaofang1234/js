@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QQ列表</title>
+    <style>
+        #list{
+            width:240px;
+            background-color: #5fb878;
+        }
+        ul, li, h2{
+            margin:0;
+            padding:0;
+            list-style: none;
+            text-indent:20px;
+        }
+        #list ul{
+            display:none;
+        }
+
+        .item li{
+            border-bottom:1px solid #333;
+            text-indent: 24px;
+            padding:4px;
+
+        }
+         h2{
+            font-size: 16px;
+            background:url(images/ico1.gif) no-repeat 5px center #FF9; color:#000;
+             margin-bottom: 1px;
+             padding:3px;
+         }
+        h2.active { background:url(images/ico2.gif) no-repeat 5px center #FF9; color:#000; }
+        .item .current{background-color: #01AAED}
+
+    </style>
+</head>
+<body>
+<ul id="list">
+    <li>
+        <h2>小学弟们</h2>
+        <ul class="item">
+            <li>陈思远</li>
+            <li>胡嘉怡</li>
+            <li>黄子恒</li>
+            <li>刘丹</li>
+            <li>南极翁</li>
+            <li>马鹏飞</li>
+            <li>麻怡若</li>
+        </ul>
+    </li>
+    <li>
+        <h2>我的好友</h2>
+        <ul class="item">
+            <li>程曦</li>
+            <li>付柳元</li>
+            <li>黄环</li>
+            <li>刘巧丽</li>
+            <li>余萌</li>
+            <li>沈润</li>
+            <li>徐婷</li>
+        </ul>
+    </li>
+    <li>
+        <h2>大学同学</h2>
+        <ul class="item">
+            <li>蔡中勇</li>
+            <li>丁玉成</li>
+            <li>陈欣欣</li>
+            <li>杨帅</li>
+            <li>杜同舟</li>
+            <li>李丹丹</li>
+            <li>李济雨</li>
+        </ul>
+    </li>
+    <li>
+        <h2>高中同学</h2>
+        <ul class="item">
+            <li>方祥</li>
+            <li>胡晓欢</li>
+            <li>李连松</li>
+            <li>刘一泽</li>
+            <li>罗勇</li>
+            <li>毛蒙</li>
+            <li>卫齐</li>
+        </ul>
+    </li>
+</ul>
+</body>
+<script>
+    window.onload = function(){
+        var oul = document.getElementById('list');
+        var oH2 = oul.getElementsByTagName('h2');
+        var aul = oul.getElementsByTagName('ul');
+        var aulList = [];
+
+        for(var i=0, h2Len = oH2.length;i<h2Len;i++){
+            aulList.push(aul[i]);
+            //给每个h2加上点击事件
+            //并给每个h2加上自定义属性index---不加是没有index的
+            oH2[i].index  = i;
+            oH2[i].onclick = function(){
+                var that = this.index;
+                //循环所有的ul,只展开一个
+                for(var h=0;h<aulList.length;h++){
+                    if(h!=that){ //隐藏ul索引与当前h2索引不匹配的ul列表
+                        aulList[h].style.display='none';
+                        oH2[h].className ='';
+                    }else{
+                        //如果当前的ul是关闭的，则展开，否则关闭
+                        if(this.className ==''){
+                            aul[that].style.display = 'block';
+                            oH2[that].className ='active';
+                        }else{
+                            aul[that].style.display = 'none';
+                            oH2[that].className ='';
+                        }
+                    }
+                }
+            }
+        }
+
+        //为每个li加上点击事件
+        var liArr = [];
+        for(var j=0 ,aulLen = aul.length;j< aulLen;j++){ //循环UL 收集所有UL下的li放到数组liArr里,并未所有的li加上点击事件
+            var ali = aul[j].getElementsByTagName('li');
+            for(var k=0 ;k<ali.length;k++){
+                liArr.push(ali[k]);
+                ali[k].onclick = function(){
+                    for(var m=0 ;m<liArr.length;m++){
+                        if(liArr[m]!=this){
+                            liArr[m].className='';
+                        }
+                    }
+                    if(this.className==''){
+                        this.className = 'current';
+                    }else{
+                        this.className = ' ';
+                    }
+               }
+            }
+        }
+       // alert(liArr.length);
+    }
+</script>
+</html>
